@@ -1,9 +1,24 @@
 import React from 'react';
+import { IUser } from '../interface/type';
+import ProfileSection from '../block/ProfileSection.tsx';
 
-type Props = {};
+interface CommentCardProps {
+  user: IUser;
+  createdAt: string;
+}
 
-const CommentCard = (props: Props) => {
-  return <div>CommentCard</div>;
+const CommentCard = (props: CommentCardProps) => {
+  const { user, createdAt } = props;
+
+  return (
+    <div>
+      <ProfileSection
+        image={user.image.png}
+        name={user.username}
+        createdAt={createdAt}
+      />
+    </div>
+  );
 };
 
 export default CommentCard;
