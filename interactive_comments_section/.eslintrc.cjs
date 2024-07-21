@@ -10,7 +10,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['prettier'],
-  ignorePatterns: ['dist', '.eslintrc.cjs', '**/__tests__/*.js'], // eslint 무시
+  ignorePatterns: ['dist', '.eslintrc.cjs', '**/__tests__/*.js', '*.config.js'], // eslint 무시
   rules: {
     // 여기에 custom 규칙 추가
     'no-var': 'warn', // var 금지
