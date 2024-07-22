@@ -16,4 +16,5 @@ export interface IComment {
   createdAt: string;
   id: number;
   score: number;
+  replyingTo?: string;
 }

@@ -5,7 +5,7 @@ import Main from './pages/Main.tsx';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-very_light_gray min-h-screen m-auto">
       <BrowserRouter>
         {/* <Header /> */}
         <Routes>
