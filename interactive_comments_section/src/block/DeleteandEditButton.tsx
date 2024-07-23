@@ -2,7 +2,8 @@ import React from 'react';
 import IconButton from '../global/IconButton/IconButton.tsx';
 
 interface DeleteandEditButtonProps {
-  none?: boolean;
+  onClickEditButton: () => void;
+  onClickDeleteButton: () => void;
 }
 
 const DeleteandEditButton = (props: DeleteandEditButtonProps) => {
@@ -14,14 +15,12 @@ const DeleteandEditButton = (props: DeleteandEditButtonProps) => {
         onClickIconBtn={() => {
           console.log('답장 켜지기');
         }}
-        color="grayish_red"
+        color="light_red"
       />
       <IconButton
         content="Edit"
         iconImage="/images/icon-edit.svg"
-        onClickIconBtn={() => {
-          console.log('답장 켜지기');
-        }}
+        onClickIconBtn={props.onClickEditButton}
         color="mid_blue"
       />
     </div>

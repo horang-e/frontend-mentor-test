@@ -10,8 +10,8 @@ const SubmitButton = (props: SubmitButtonProps) => {
     <div
       className="bg-mid_blue
     hover:bg-light_grayish_blue
-    px-7 py-2 rounded-md text-white font-semibold h-fit cursor-pointer"
-      onClick={props.onClick}
+    px-7 py-2 rounded-md text-white font-semibold h-fit cursor-pointer w-fit"
+      onClick={() => props.onClick()}
     >
       {props.content}
     </div>

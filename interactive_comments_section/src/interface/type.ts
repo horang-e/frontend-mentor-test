@@ -6,15 +6,19 @@ export interface IUser {
   username: string;
 }
 
-export interface IReply extends IComment {
+export interface IBaseComment {
+  id: number | string;
+  content: string;
+  createdAt: string;
+  score: number;
+  user: IUser;
+  replyingTo?: string;
+}
+
+export interface IReply extends IBaseComment {
   replyingTo: string;
 }
 
-export interface IComment {
-  user: IUser;
-  content: string;
-  createdAt: string;
-  id: number;
-  score: number;
-  replyingTo?: string;
+export interface IComment extends IBaseComment {
+  replies?: IReply[];
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import IconButton from '../global/IconButton/IconButton.tsx';
 
 interface ReplyButtonProps {
-  none?: boolean;
+  setNewReplyForm: React.Dispatch<React.SetStateAction<boolean>>;
+  newReplyForm: boolean;
 }
 
 const ReplyButton = (props: ReplyButtonProps) => {
@@ -11,7 +12,7 @@ const ReplyButton = (props: ReplyButtonProps) => {
       content="Reply"
       iconImage="/images/icon-reply.svg"
       onClickIconBtn={() => {
-        console.log('답장 켜지기');
+        props.setNewReplyForm(!props.newReplyForm);
       }}
       color="mid_blue"
     />
