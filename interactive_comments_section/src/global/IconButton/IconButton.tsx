@@ -8,13 +8,18 @@ export interface IconButtonProps {
 }
 
 const IconButton = (props: IconButtonProps) => {
+  const COLOR_CHIP = {
+    mid_blue: 'text-mid_blue font-semibold',
+    red: 'text-light_red font-semibold',
+  };
+
   return (
     <div
       className="gap-2.5 w-fit flex p-2 items-center cursor-pointer"
       onClick={props.onClickIconBtn}
     >
       <img src={props.iconImage} className="w-4 h-4" />
-      <div className={`text-${props.color} font-semibold`}>{props.content}</div>
+      <div className={COLOR_CHIP[props.color]}>{props.content}</div>
     </div>
   );
 };

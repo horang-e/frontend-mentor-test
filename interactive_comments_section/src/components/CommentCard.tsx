@@ -7,6 +7,8 @@ import DeleteandEditButton from '../block/DeleteandEditButton.tsx';
 import NewCommentForm from './NewCommentForm.tsx';
 import { getLocalValue } from '../hooks/useLocalStorage.ts';
 import SubmitButton from '../global/SubmitButton/SubmitButton.tsx';
+import IconButton from '../global/IconButton/IconButton.tsx';
+import DeleteModal from '../block/DeleteModal.tsx';
 
 interface CommentCardProps {
   comment: IComment | IReply;
@@ -53,6 +55,28 @@ const CommentCard = ({
     setComments(newComments);
   };
 
+  const editComment = () => {
+    if (!isEditable) return;
+    const comments = getLocalValue('comments');
+    const updatedComments = comments.map(commentItem => {
+      if (commentItem.id === comment.id) {
+        return { ...commentItem, content: editingContent };
+      }
+      return {
+        ...commentItem,
+        replies:
+          commentItem.replies &&
+          commentItem.replies.map(reply =>
+            reply.id === comment.id
+              ? { ...reply, content: editingContent }
+              : reply,
+          ),
+      };
+    });
+    setComments(updatedComments);
+    setIsEditable(false);
+  };
+
   return (
     <div>
       <div className="bg-white p-4 rounded-lg flex flex-col sm:flex-row w-full">
@@ -75,15 +99,18 @@ const CommentCard = ({
             />
             <div className="hidden sm:block">
               {isSelf ? (
-                <DeleteandEditButton
-                  onClickEditButton={() => {
-                    setIsEditable(!isEditable);
-                    setEditingContent(comment.content);
-                  }}
-                  onClickDeleteButton={() => {
-                    console.log('del');
-                  }}
-                />
+                <div className="flex">
+                  <DeleteModal setComments={setComments} id={comment.id} />
+                  <IconButton
+                    content="Edit"
+                    iconImage="/images/icon-edit.svg"
+                    onClickIconBtn={() => {
+                      setIsEditable(!isEditable);
+                      setEditingContent(comment.content);
+                    }}
+                    color="mid_blue"
+                  />
+                </div>
               ) : (
                 <ReplyButton
                   setNewReplyForm={setNewReplyForm}
@@ -101,10 +128,7 @@ const CommentCard = ({
                 rows={3}
                 placeholder="Add a comment.."
               />
-              <SubmitButton
-                content={'UPDATE'}
-                onClick={() => setIsEditable(false)}
-              />
+              <SubmitButton content={'UPDATE'} onClick={() => editComment()} />
             </div>
           ) : (
             <div className="text-gray-500 mb-4 sm:mb-0">
@@ -126,15 +150,18 @@ const CommentCard = ({
               }}
             />
             {isSelf ? (
-              <DeleteandEditButton
-                onClickEditButton={() => {
-                  setIsEditable(!isEditable);
-                  setEditingContent(comment.content);
-                }}
-                onClickDeleteButton={() => {
-                  console.log('del');
-                }}
-              />
+              <div className="flex">
+                <DeleteModal setComments={setComments} id={comment.id} />
+                <IconButton
+                  content="Edit"
+                  iconImage="/images/icon-edit.svg"
+                  onClickIconBtn={() => {
+                    setIsEditable(!isEditable);
+                    setEditingContent(comment.content);
+                  }}
+                  color="mid_blue"
+                />
+              </div>
             ) : (
               <ReplyButton
                 setNewReplyForm={setNewReplyForm}

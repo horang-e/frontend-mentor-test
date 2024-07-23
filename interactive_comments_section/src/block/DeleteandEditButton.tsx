@@ -9,14 +9,14 @@ interface DeleteandEditButtonProps {
 const DeleteandEditButton = (props: DeleteandEditButtonProps) => {
   return (
     <div className="flex">
-      <IconButton
+      {/* <IconButton
         content="Delete"
         iconImage="/images/icon-delete.svg"
         onClickIconBtn={() => {
           console.log('답장 켜지기');
         }}
-        color="light_red"
-      />
+        color="red"
+      /> */}
       <IconButton
         content="Edit"
         iconImage="/images/icon-edit.svg"
