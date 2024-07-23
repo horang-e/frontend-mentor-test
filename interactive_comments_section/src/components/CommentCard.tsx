@@ -14,6 +14,7 @@ interface CommentCardProps {
   currentUser: IUser;
   setComments: (value: IComment[]) => void;
   mainCommentId: string | number;
+  comments: IComment[] | IReply[];
 }
 
 const CommentCard = ({
@@ -21,6 +22,7 @@ const CommentCard = ({
   currentUser,
   setComments,
   mainCommentId,
+  comments,
 }: CommentCardProps) => {
   const isSelf = comment.user.username === currentUser.username;
 
@@ -29,7 +31,6 @@ const CommentCard = ({
   const [editingContent, setEditingContent] = useState<string>('');
 
   const updateScore = (increment: boolean) => {
-    const comments = getLocalValue('comments');
     const newComments = comments.map(commentItem => {
       if (commentItem.id === comment.id) {
         return {
@@ -56,7 +57,6 @@ const CommentCard = ({
 
   const editComment = () => {
     if (!isEditable) return;
-    const comments = getLocalValue('comments');
     const updatedComments = comments.map(commentItem => {
       if (commentItem.id === comment.id) {
         return { ...commentItem, content: editingContent };

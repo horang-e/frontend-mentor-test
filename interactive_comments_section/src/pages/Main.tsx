@@ -24,6 +24,7 @@ const Main = () => {
                   currentUser={currentUser}
                   setComments={setComments}
                   mainCommentId={comment.id}
+                  comments={comments}
                 />
                 {comment.replies && comment.replies.length > 0 && (
                   <div className="flex mt-5 ">
@@ -36,6 +37,7 @@ const Main = () => {
                             currentUser={data.currentUser}
                             setComments={setComments}
                             mainCommentId={comment.id}
+                            comments={comments}
                           />
                         </div>
                       ))}
