@@ -5,11 +5,7 @@ import NewCommentForm from '../components/NewCommentForm.tsx';
 import { useLocalStorage } from '../hooks/useLocalStorage.ts';
 import { IComment, IUser } from '../interface/type.ts';
 
-interface Props {
-  someProp: string;
-}
-
-const Main = (props: Props) => {
+const Main = () => {
   const [comments, setComments] = useLocalStorage<IComment[]>(
     'comments',
     data.comments,

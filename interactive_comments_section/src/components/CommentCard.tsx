@@ -3,7 +3,6 @@ import { IComment, IReply, IUser } from '../interface/type';
 import ProfileSection from '../block/ProfileSection.tsx';
 import ScoreButton from '../block/ScoreButton.tsx';
 import ReplyButton from '../block/ReplyButton.tsx';
-import DeleteandEditButton from '../block/DeleteandEditButton.tsx';
 import NewCommentForm from './NewCommentForm.tsx';
 import { getLocalValue } from '../hooks/useLocalStorage.ts';
 import SubmitButton from '../global/SubmitButton/SubmitButton.tsx';
